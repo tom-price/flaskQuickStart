@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+	{% block head %}
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="">
+	<meta name="author" content="">
+	<link href='//fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+<!-- 	<link href='http://fonts.googleapis.com/css?family=Comfortaa' rel='stylesheet' type='text/css'> -->
+	<link rel="shortcut icon" href="/static/assets/ico/favicon.ico">
+	<link href="/static/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+
+
+	<link href="/static/css/base.css" rel="stylesheet">
+	{% block additionalStyling %}{% endblock %}
+	<title>{% block title %}{% endblock %}</title>
+	{% block title2 %}{% endblock %}
+	{% endblock %}
+</head>
+<body>
+<div id="wrapper">
+
+<form method="post" action="/">
+	<input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+</form>
+	<nav class="navbar navbar-default navbar-fixed-top">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+			<a class="navbar-brand" href="#">Project name</a>
+			</div>
+
+			<div id="navbar" class="collapse navbar-collapse">
+          		<ul class="nav navbar-nav navbar-right">
+					<li><a href="/">Home</a></li>
+					<li><a href="/blog">Blog</a></li>
+					<li><a data-toggle="modal" data-target="#contactModal">Contact</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+	<div class="modal fade" id="contactModal" tabindex="-1" role="dialog" aria-labelledby="contactModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+			 	<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+					<h4 class="modal-title" id="contactModalLabel">Email Thomas</h4>
+				</div>
+				<form action="" method=post class="">
+			      	<div class="modal-body">
+
+			      		<input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+
+						<div class="form-group">
+							<label for="formName">Your Name: </label>
+							<input type="text" name="name" placeholder="Your Name" class="form-control required" required id="formName">
+						</div>
+
+						<div class="form-group">
+							<label for="fromemail">Email Address: </label>  
+							<input type="Email" id="fromemail" name="fromemail" class="required email form-control" placeholder="you@youraddress.com" required>
+						</div>
+						<div class="form-group">
+							<label for="message">Message: </label>  
+                     		<textarea class="form-control" rows="3" id="message" name="message"></textarea>
+				        </div>
+
+			      	</div>
+			      	<div class="modal-footer">
+			        	<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+			        	<button type="submit" id="singlebutton" name="singlebutton" class="btn btn-primary">Send</button>
+			      	</div>
+		      	</form>
+			</div>
+		</div>
+	</div>
+
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    <ul>
+    {% for message in messages %}
+        <li>{{ message }} </li>
+    {% endfor %}
+    </ul>
+    {% endif %}
+    {% endwith %}
+	<div id="content">
+		{% block body %}
+		{% endblock %}
+	</div>
+	<div id="footer">
+		<div class="col-xs-4">
+			<a href="https://twitter.com/BengtPrice" >Twitter</a>
+			<a data-toggle="modal" data-target="#contactModal">Contact</a>
+			<div>
+			&copy; 2015 Thomas Price
+			</div>	
+		</div>
+    </div>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+	<script type="text/javascript" src="/static/bootstrap/dist/js/bootstrap.min.js"></script>
+	{% block additionalScripts %}{% endblock %}
+	
+	<script>
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+		ga('create', 'UA-28427315-1', 'auto');
+		ga('send', 'pageview');
+
+	</script>
+
+</div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

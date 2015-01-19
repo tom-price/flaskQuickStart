@@ -1,0 +1,55 @@
+/* Move down content because we have a fixed navbar that is 50px tall */
+html,
+body {
+  margin:0;
+  padding:0;
+  height:100%;
+}
+
+html {
+   position: relative;
+}
+
+body{
+  padding-top: 50px;
+  -webkit-font-smoothing: antialiased;
+  font-family: 'Open Sans';
+  color: #505151;
+}
+
+#wrapper {
+  min-height:100%;
+  position:relative;
+  overflow:auto;
+}
+
+#content {
+  overflow:auto;
+  padding-bottom:80px;   /* Height of the footer element */
+}
+
+#footer {
+  width:100%;
+  height:auto;
+  overflow:auto;
+  padding: 20px;
+  position:absolute;
+  bottom:0;
+  left:0;
+  color: #ffffff;
+  background-color: #18181d;
+}
+
+.footer_left{
+  text-align: left; 
+  padding: 0px
+}
+.footer_center{
+  display: block;
+  margin: 0 auto;
+  padding: 0px;
+}
+.footer_right{
+  float: right; 
+  padding: 0px;
+}
